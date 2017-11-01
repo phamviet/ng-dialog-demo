@@ -1,0 +1,63 @@
+
+
+$dialog-padding: 24px !default;
+$dialog-border-radius: 2px !default;
+$dialog-max-height: 65vh !default;
+$dialog-button-margin: 8px !default;
+
+.dialog-container {
+  //@include mat-elevation(24);
+
+  display: block;
+  padding: $dialog-padding;
+  border-radius: $dialog-border-radius;
+  box-sizing: border-box;
+  overflow: auto;
+  outline: 0;
+
+  // The dialog container should completely fill its parent overlay element.
+  width: 100%;
+  height: 100%;
+
+  //@include cdk-high-contrast {
+  //  outline: solid 1px;
+  //}
+}
+
+.dialog-content {
+  display: block;
+  margin: 0 $dialog-padding * -1;
+  padding: 0 $dialog-padding;
+  max-height: $dialog-max-height;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+
+  // Promote the content to a new GPU layer to avoid repaints on scroll.
+  //@include backface-visibility(hidden);
+}
+
+.mat-dialog-title {
+  margin: 0 0 20px;
+  display: block;
+}
+
+.dialog-actions {
+  padding: $dialog-padding / 2 0;
+  display: flex;
+  flex-wrap: wrap;
+
+  &:last-child {
+    // If the actions are the last element in a dialog, we need to pull them down
+    // over the dialog padding, in order to avoid the action's padding stacking
+    // with the dialog's.
+    margin-bottom: -$dialog-padding;
+  }
+
+  &[align='end'] {
+    justify-content: flex-end;
+  }
+
+  &[align='center'] {
+    justify-content: center;
+  }
+}
