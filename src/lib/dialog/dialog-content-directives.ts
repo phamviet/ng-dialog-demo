@@ -1,11 +1,3 @@
-/**
- * @license
- * Copyright Google LLC All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-
 import {Directive, Input, OnChanges, OnInit, Optional, SimpleChanges} from '@angular/core';
 import {DialogRef} from './dialog-ref';
 import {DialogContainer} from './dialog-container';
