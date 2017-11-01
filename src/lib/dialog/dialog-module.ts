@@ -11,7 +11,7 @@ import {CommonModule} from '@angular/common';
 import {OverlayModule} from '@angular/cdk/overlay';
 import {PortalModule} from '@angular/cdk/portal';
 import {A11yModule} from '@angular/cdk/a11y';
-import {Dialog, MAT_DIALOG_SCROLL_STRATEGY_PROVIDER} from './dialog';
+import {Dialog, DIALOG_SCROLL_STRATEGY_PROVIDER} from './dialog';
 import {DialogContainer} from './dialog-container';
 import {
   DialogClose,
@@ -44,7 +44,7 @@ import {
   ],
   providers: [
     Dialog,
-    MAT_DIALOG_SCROLL_STRATEGY_PROVIDER,
+    DIALOG_SCROLL_STRATEGY_PROVIDER,
   ],
   entryComponents: [DialogContainer],
 })

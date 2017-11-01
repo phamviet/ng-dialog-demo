@@ -39,24 +39,24 @@ import {DialogRef} from './dialog-ref';
 import {of as observableOf} from 'rxjs/observable/of';
 
 
-export const MAT_DIALOG_DATA = new InjectionToken<any>('MatDialogData');
+export const DIALOG_DATA = new InjectionToken<any>('DialogData');
 
 
 /** Injection token that determines the scroll handling while the dialog is open. */
-export const MAT_DIALOG_SCROLL_STRATEGY =
+export const DIALOG_SCROLL_STRATEGY =
     new InjectionToken<() => ScrollStrategy>('mat-dialog-scroll-strategy');
 
 /** @docs-private */
-export function MAT_DIALOG_SCROLL_STRATEGY_PROVIDER_FACTORY(overlay: Overlay):
+export function DIALOG_SCROLL_STRATEGY_PROVIDER_FACTORY(overlay: Overlay):
     () => BlockScrollStrategy {
   return () => overlay.scrollStrategies.block();
 }
 
 /** @docs-private */
-export const MAT_DIALOG_SCROLL_STRATEGY_PROVIDER = {
-  provide: MAT_DIALOG_SCROLL_STRATEGY,
+export const DIALOG_SCROLL_STRATEGY_PROVIDER = {
+  provide: DIALOG_SCROLL_STRATEGY,
   deps: [Overlay],
-  useFactory: MAT_DIALOG_SCROLL_STRATEGY_PROVIDER_FACTORY,
+  useFactory: DIALOG_SCROLL_STRATEGY_PROVIDER_FACTORY,
 };
 
 
@@ -96,7 +96,7 @@ export class Dialog {
       private _overlay: Overlay,
       private _injector: Injector,
       @Optional() location: Location,
-      @Inject(MAT_DIALOG_SCROLL_STRATEGY) private _scrollStrategy,
+      @Inject(DIALOG_SCROLL_STRATEGY) private _scrollStrategy,
       @Optional() @SkipSelf() private _parentDialog: Dialog) {
 
     // Close all of the dialogs when the user goes forwards/backwards in history or when the
@@ -287,7 +287,7 @@ export class Dialog {
     // purposes.  To allow the hierarchy that is expected, the DialogContainer is explicitly
     // added to the injection tokens.
     injectionTokens.set(DialogContainer, dialogContainer);
-    injectionTokens.set(MAT_DIALOG_DATA, config.data);
+    injectionTokens.set(DIALOG_DATA, config.data);
     injectionTokens.set(Directionality, {
       value: config.direction,
       change: observableOf()
